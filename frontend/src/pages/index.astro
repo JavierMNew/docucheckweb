@@ -1,9 +1,36 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
 ---
 
 <Layout
   title="Docucheck"
   description="Herramienta en línea para la verificación de documentos"
 >
+  <SectionContainer class="pt-32 pb-32">
+    <div class="flex justify-center pb-6">
+      <a href="">
+        <button
+          class="text-[#F4F5F7] inline-flex items-center justify-center border align-middle select-none font-sans font-semibold text-center transition-all ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none py-2 px-4 bg-[#3B5444] relative border-stone-500 hover:bg-transparent duration-150 hover:border-stone-200 rounded-full hover:shadow-none shadow-lg shadow-green-500/15"
+        >
+          <span class=""
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. <span
+              class="text-green-400 font-bold"
+              >Saber más <span class="text-[#8BBE43]">&rarr;</span></span
+            ></span
+          >
+        </button>
+      </a>
+    </div>
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      A dd dddd dddd <br />
+      dddd ddddddd <span
+        class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
+        >ddddd dd!</span
+      >
+    </h1>
+    <p class="text-center text-[20px] text-gray-300 mt-4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </SectionContainer>
 </Layout>
