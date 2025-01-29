@@ -7,9 +7,9 @@ from routes.validate_docx import validate_docx # Importa el nuevo blueprint
 
 
 app = Flask(__name__)
-CORS(app)  # Cambia por tu dominio
+CORS(app)  
 
-# Registrar las rutas
+#rutas
 app.register_blueprint(upload_document)
 app.register_blueprint(ask_question)
 app.register_blueprint(get_prompt)
