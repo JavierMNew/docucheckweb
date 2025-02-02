@@ -1,118 +1,461 @@
-# **Documentación de la API del Backend a IntegradoraWeb**
+# Documentación de la API
 
-## **Base URL**
-La base URL para acceder al backend es:  
-`http://localhost:5000/`  
-(Recuerda que esto puede variar dependiendo de tu entorno de producción)
+Este documento describe el uso de los endpoints de la API.
 
+## 1. Registro de Usuario
 
-
-## **1. Subir un Documento**
-**URL**: `/upload`  
-**Método**: `POST`  
-**Descripción**: Este endpoint permite subir un documento (por ejemplo, un archivo PDF) al servidor para su procesamiento con la API de ChatPDF.
-
-### **Request**
-- **Body**:
-  - `file`: El archivo PDF que se desea cargar.
-
-### **Respuesta**
-- **Código 200 (OK)**:
-```json
-{
-  "sourceId": "ID_GENERADO_DEL_DOCUMENTO"
-}
-```
-### **Ejemplo de Consumo desde el Frontend**
+**Endpoint:**
 
 ```
-import React, { useState } from 'react';
-
-function App() {
-  const [file, setFile] = useState(null);
-  const [sourceId, setSourceId] = useState(null);
-
-  const handleFileChange = (e) => setFile(e.target.files[0]);
-
-  const handleUpload = async () => {
-    const formData = new FormData();
-    formData.append('file', file);
-    const res = await fetch('http://localhost:5000/upload', { method: 'POST', body: formData });
-    const data = await res.json();
-    if (res.ok) setSourceId(data.sourceId);
-  };
-
-  return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Subir Documento</button>
-      {sourceId && <p>Documento cargado, Source ID: {sourceId}</p>}
-    </div>
-  );
-}
-
-export default App;
+POST http://localhost:3000/auth/register
 ```
 
-## **2. Hacer Preguntas sobre el Documento**
+**Headers:**
 
-**URL:** `/ask`  
-**Método:** `POST`  
-**Descripción:** Este endpoint permite hacer una pregunta sobre el contenido de un documento previamente cargado, utilizando el `sourceId` obtenido al subir el archivo.
-
-### Request
+```
+Content-Type: application/json
+```
 
 **Body:**
-- `sourceId`: El identificador único del documento.
-- `question`: La pregunta que el usuario desea hacer sobre el contenido del documento.
-
-### Respuesta
-
-- **Código 200 (OK)**:
 
 ```json
 {
-  "content": "contenido del documento."
+    "username": "newuser",
+    "email": "newuser@example.com",
+    "password": "password123"
+}
+```
+**Respuesta (200 OK):**
+
+```json
+{
+    "message": "User created successfully"
 }
 ```
 
-### **Ejemplo de Consumo desde el Frontend**
+
+
+## 2. Inicio de Sesión
+
+**Endpoint:**
 
 ```
-import React, { useState } from 'react';
+POST /auth/login
+```
 
-function App() {
-  const [sourceId, setSourceId] = useState('some-id');
-  const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
+**Headers:**
 
-  const handleAskQuestion = async () => {
-    const res = await fetch('http://localhost:5000/ask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sourceId, question }),
-    });
-    const data = await res.json();
-    if (res.ok) setResponse(data.content);
-  };
+```
+Content-Type: application/json
+```
 
-  return (
-    <div>
-      <input
-        type="text"
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Escribe tu pregunta"
-      />
-      <button onClick={handleAskQuestion}>Preguntar</button>
-      {response && <p>Respuesta: {response}</p>}
-    </div>
-  );
+**Body:**
+
+```json
+{
+    "username": "testuser",
+    "password": "123456"
 }
+```
 
-export default App;
+**o**
+
+```json
+{
+    "username": "admin",
+    "password": "admin123"
+}
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "message": "Login successful"
+}
+```
+
+**Nota:** La respuesta incluye una cookie de sesión que debe usarse en las solicitudes posteriores.
+
+## 3. Cerrar Sesión
+
+**Endpoint:**
 
 ```
+POST /auth/logout
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "message": "Logout successful",
+    "status": "success"
+}
+```
+
+# Gestión de Documentos
+
+## 4. Subir PDF
+
+**Endpoint:**
+
+```
+POST /upload
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+Content-Type: multipart/form-data
+```
+
+**Formulario:**
+
+- **Clave:** `file`
+- **Valor:** [Archivo PDF]
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "sourceId": "src_abc123xyz",
+    "needsReview": false
+}
+```
+
+## 5. Realizar una Pregunta
+
+**Endpoint:**
+
+```
+POST /ask
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+Content-Type: application/json
+```
+
+**Body:**
+
+```json
+{
+    "sourceId": "src_abc123xyz",
+    "question": "De que trata el PDF"
+}
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "content": "Response from ChatPDF API",
+    "sourceId": "src_abc123xyz"
+}
+```
+
+# Endpoints de Administración
+
+## 6. Obtener Documentos Pendientes de Revisión
+
+**Endpoint:**
+
+```
+GET /admin/review
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+[
+    {
+        "_id": "doc123",
+        "filename": "document.pdf",
+        "originalName": "original.pdf",
+        "userId": {
+            "username": "testuser",
+            "email": "test@example.com"
+        },
+        "sourceId": "src_abc123xyz",
+        "uploadCount": 6,
+        "needsReview": true
+    }
+]
+```
+
+## 7. Obtener Todos los Usuarios
+
+**Endpoint:**
+
+```
+GET /admin/users
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+[
+    {
+        "_id": "user123",
+        "username": "testuser",
+        "email": "test@example.com",
+        "isAdmin": false,
+        "createdAt": "2024-01-20T00:00:00.000Z"
+    }
+]
+```
+
+## 8. Convertir un Usuario en Administrador
+
+**Endpoint:**
+
+```
+POST /admin/make-admin/:userId
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "message": "User is now an admin",
+    "user": "testuser"
+}
+```
+
+## 9. Revisar un Documento
+
+**Endpoint:**
+
+```
+POST /admin/review/:documentId
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+Content-Type: application/json
+```
+
+**Body:**
+
+```json
+{
+    "approved": true
+}
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "message": "Document reviewed",
+    "approved": true
+}
+```
+
+## 10. Ver Todos los Documentos (como admin)
+
+**Endpoint:**
+
+```
+GET http://localhost:3000/admin/documents
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+[
+  {
+    "_id": "doc123",
+    "filename": "1705789456789.pdf",
+    "originalName": "documento1.pdf",
+    "userId": {
+      "_id": "user123",
+      "username": "usuario1",
+      "email": "usuario1@example.com"
+    },
+    "sourceId": "src_abc123",
+    "createdAt": "2024-01-20T12:00:00Z"
+  }
+]
+```
+
+## 11. Ver Documentos de un Usuario Específico (como admin)
+
+**Endpoint:**
+
+```
+GET http://localhost:3000/admin/documents/user/user123
+```
+
+**Headers:**
+
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Respuesta (200 OK):**
+
+```json
+[
+  {
+    "_id": "doc123",
+    "filename": "1705789456789.pdf",
+    "originalName": "documento1.pdf",
+    "userId": {
+      "_id": "user123",
+      "username": "usuario1",
+      "email": "usuario1@example.com"
+    },
+    "sourceId": "src_abc123",
+    "createdAt": "2024-01-20T12:00:00Z"
+  }
+]
+```
+
+# Validación de Documentos
+
+## 12. Obtener Prompt para Validar un Capítulo
+
+**Endpoint:**
+
+```
+POST /get-prompt
+```
+
+**Headers:**
+
+```
+Content-Type: application/json
+```
+
+**Body:**
+
+```json
+{
+    "chapter": "Capitulo_1"
+}
+```
+
+**Respuesta (200 OK):**
+
+```json
+{
+    "prompt": "Contenido del prompt para el capítulo..."
+}
+```
+
+**Error (404):**
+
+```json
+{
+    "error": "El prompt para Capitulo_1 no se encuentra cargado."
+}
+```
+
+## 13. Validar Documento DOCX
+
+**Endpoint:**
+
+```
+POST http://localhost:5000/validate-docx-file
+```
+
+**Headers:**
+
+```
+Content-Type: multipart/form-data
+```
+
+**Formulario:**
+
+- **Clave:** `file`
+- **Valor:** [Seleccionar archivo .docx]
+
+**Notas Importantes:**
+- El archivo debe ser un `.docx` válido.
+- Solo se validan los títulos especificados.
+- Se verifican tanto el tamaño como el tipo de fuente.
+
+
+
+# Manejo de Errores
+
+## Errores de Autenticación
+
+**401 Unauthorized:**
+
+```json
+{
+    "error": "Invalid credentials"
+}
+```
+
+**403 Forbidden:**
+
+```json
+{
+    "error": "Forbidden"
+}
+```
+
+## Errores de Validación
+
+**400 Bad Request:**
+
+```json
+{
+    "error": "Validation error message"
+}
+```
+
+## Errores del Servidor
+
+**500 Internal Server Error:**
+
+```json
+{
+    "error": "Error message",
+    "details": "Additional error details"
+}
+```
+
+
 # Astro Starter Kit: Basics
 
 ```sh
