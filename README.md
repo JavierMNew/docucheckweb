@@ -1,3 +1,46 @@
+# Iniciar Servidores Node.js y Flask
+
+## Iniciar el Servidor Node.js (Express)
+
+1. Abre una terminal.
+2. Navega hasta la carpeta del backend:
+   ```sh
+   cd backend
+   ```
+3. Entra a la carpeta de Express:
+   ```sh
+   cd express
+   ```
+4. Inicia el servidor con:
+   ```sh
+   npm run dev
+   ```
+
+---
+
+## Iniciar el Servidor Flask
+
+1. Abre una terminal.
+2. Navega hasta la carpeta del backend:
+   ```sh
+   cd backend
+   ```
+3. Entra a la carpeta de Flask:
+   ```sh
+   cd flask
+   ```
+4. Activa el entorno virtual (es necesario):
+   - En Windows:
+     ```sh
+     venv\Scripts\activate
+     ```
+     
+5. Ejecuta el servidor Flask:
+   ```sh
+   python app.py
+   ```
+
+
 # Documentación de la API
 
 ## 1. Registro de Usuario
@@ -159,6 +202,56 @@ Content-Type: application/json
 {
     "content": "Response from ChatPDF API",
     "sourceId": "src_abc123xyz"
+}
+```
+
+## Ver mis PDFs (como usuario)
+
+### Obtener lista de PDFs
+**GET** `http://localhost:3000/upload/my-documents`
+
+**Headers:**
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Response 200:**
+```json
+{
+  "total": 2,
+  "documents": [
+    {
+      "_id": "doc123",
+      "filename": "1705789456789.pdf",
+      "originalName": "documento1.pdf",
+      "sourceId": "src_abc123",
+      "createdAt": "2024-01-20T12:00:00Z",
+      "needsReview": false,
+      "approved": null
+    }
+    // ... más documentos
+  ]
+}
+```
+
+### Ver detalle de un PDF en específico (como usurio)
+**GET** `http://localhost:3000/upload/document/idDelPDF`
+
+**Headers:**
+```
+Cookie: connect.sid=<session-cookie>
+```
+
+**Response 200:**
+```json
+{
+  "_id": "doc123",
+  "filename": "1705789456789.pdf",
+  "originalName": "documento1.pdf",
+  "sourceId": "src_abc123",
+  "createdAt": "2024-01-20T12:00:00Z",
+  "needsReview": false,
+  "approved": null
 }
 ```
 
