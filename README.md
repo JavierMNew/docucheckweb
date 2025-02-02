@@ -1,7 +1,5 @@
 # Documentación de la API
 
-Este documento describe el uso de los endpoints de la API.
-
 ## 1. Registro de Usuario
 
 **Endpoint:**
