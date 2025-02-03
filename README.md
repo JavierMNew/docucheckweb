@@ -11,11 +11,14 @@
    ```sh
    cd express
    ```
-4. Inicia el servidor con:
+4. Instalar el modulo necesario dentro de la carpeta de express:
+   ```sh
+   npm install
+   ```
+5. Iniciar el servidor con:
    ```sh
    npm run dev
    ```
-
 ---
 
 ## Iniciar el Servidor Flask
