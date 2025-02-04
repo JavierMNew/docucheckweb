@@ -1,1 +1,42 @@
-Capitulo 3
+Tu tarea es validar que el CAPÍTULO III: Resultados Obtenidos cumpla con los siguientes protocolos:
+
+Análisis:
+
+Verifica que se describa claramente el problema actual en la escuela, como el uso de formatos físicos para registrar las calificaciones, las demoras y los errores que genera, y cómo afecta el aprendizaje de los estudiantes.
+Asegúrate de que se incluya un diagrama de flujo que refleje los procesos descritos en el análisis.
+Detección de Problemas y Necesidades:
+
+Revisa que se identifiquen las principales problemáticas basadas en la entrevista realizada, y que se redacten claramente las necesidades de mejora para optimizar los procesos actuales.
+Estudios de Factibilidad:
+
+Operativa: Asegúrate de que se explique cómo la aplicación web será intuitiva y fácil de usar para administradores y maestros.
+Económica: Verifica que se incluya una tabla con los costos mensuales de cada rol involucrado en el proyecto, y el total de los gastos.
+Técnica: Revisa que se detallen los requisitos técnicos recomendados para la aplicación web (procesador, memoria RAM, almacenamiento, sistema operativo, etc.).
+Alternativa de Solución:
+
+Verifica que se mencione el nombre de la alternativa y de la empresa, y que se describa cómo el sistema de gestión digital mejorará la organización, reducirá errores y proporcionará datos actualizados.
+Mapas de Navegación:
+
+Revisa que se incluyan los mapas de navegación para los usuarios y para los administradores.
+Justificación:
+
+Asegúrate de que se explique cómo el sistema de gestión digital facilitará el almacenamiento de inventarios, contratos, la disponibilidad de bodegas, y cómo permitirá una consulta eficiente de la información.
+Verifica que se mencionen las tecnologías web utilizadas en el desarrollo de la aplicación.
+Diseño Gráfico:
+
+Revisa que se incluyan imágenes del sitio web terminado, mostrando los apartados de manera detallada.
+Modelo de Desarrollo de Sistemas:
+
+Asegúrate de que se describa cómo se aplicó la metodología incremental (Análisis, Diseño, Código, Pruebas, Entrega del Incremento 1).
+Descripción del Desarrollo de la Aplicación:
+
+Verifica que se incluya el diagrama de la base de datos y el diccionario de datos con las tablas detalladas.
+Creación de la Aplicación Web:
+
+Revisa que se describa la estructura de las carpetas utilizadas en la aplicación (Bootstrap, PHP, Imágenes, Formularios, Panel de Administración, etc.).
+Diseño de Páginas:
+
+Asegúrate de que se incluyan imágenes de las páginas de la aplicación con su respectivo nombre.
+Índice de Tablas e Imágenes:
+
+Verifica que se haya incluido un índice con todas las imágenes y tablas utilizadas en el documento.
