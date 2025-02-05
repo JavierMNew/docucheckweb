@@ -2,9 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const cors = require('cors')
+
 const { MONGODB_URI, SESSION_SECRET } = require('./config');
 
 const app = express();
+
+// CORS configuration
+app.use(cors({
+  origin: 'http://localhost:2000',
+  credentials: true
+}));
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI);
