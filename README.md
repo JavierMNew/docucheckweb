@@ -43,6 +43,46 @@
    python app.py
    ```
 
+# Pasos para configurar el login con google
+1. En el navegador escribir google developer console y clic en la primera opción
+2. Dar clic en nuevo proyecto
+3. Elige el nombre del proyecto ej:"docucheckweb", y sin organización darle a crear
+4. Cuando el proyecto se termine de crear y aparezca la notificación darle a seleccionar proyecto
+5. En el toolbar o menu de navegación buscar dentro de productos fijados la opción "APIs y servicios" luego en Pantalla de consentimiento OAuth
+6. Seleccionar la opción externos y luego al botón de crear
+7. Poner nuevamente el nombre de la aplicación, el correo electronico personal o a utilizar
+8. Saltarse las demas opciones hasta "Información de contacto del desarrollador" escribir nuevamente el correo, clic al botón de guardar
+9. Volver a revisar la toolbar o menú de navegación y seleccionar la opción "Credenciales"
+10. Darle clic a "Crear credenciales" y seleccionar la opcioón: "ID de cliente OAuth"
+11. Seleccionar tipo de aplicación: Aplicación web 
+12. Escribir nuevamente el nombre de la aplicación
+13. Clic en agregar URI de la sección "Orígenes autorizados de JavaScript "
+14. Ingresar la siguiente URL: http://localhost:3000
+15. Clic en agregar URI de la sección "URI de redireccionamiento autorizados"
+16. Ingresar la siguiente URL: http://localhost:3000/auth/google/callback
+17. Dar clic en crear
+18. Copiar el ID de cliente y pegarlo en la variable "GOOGLE_CLIENT_ID" del archivo .env
+19. Copiar el Secreto del cliente y pegarlo en la variable "GOOGLE_CLIENT_SECRET" del archivo .env
+    - Hacer los pasos para iniciar el servidor de Node.js pero antes de correrlo, ingresar el siguiente comando con la libreria necesaria de google: npm install passport passport-google-oauth20
+    Una vez que se haya instalado, correr el servidor y sin olvidar correr el servidor de mongoDB
+
+    - Para probarlo con Postman ingresar la siguiente URL: http://localhost:3000/auth/google
+    Seleccionar la pestaña Authorization, hacer scroll hasta "Configure New Token" y en los campos poner lo siguiente:
+    Token Name: Google Auth Token
+    Grant Type: Authorization Code
+    Callback URL: http://localhost:3000/auth/google/callback
+    Auth URL: https://accounts.google.com/o/oauth2/v2/auth
+    Access Token URL: https://oauth2.googleapis.com/token
+    Client ID: Tu GOOGLE_CLIENT_ID /No variables, la credencial ingresada en .env/
+    Client Secret: Tu GOOGLE_CLIENT_SECRET /No variables, la credencial ingresada en .env/
+    Scope: profile email
+    State: (opcional)
+    Client Authentication: Send as Basic Auth header
+    - Dar clic en "Get New Access Token"
+    - Ingresar tu correo y contraseña
+    - Automaticamente te pondra el token por lo que solo debes enviar la solicitud
+    - En cualquier navegador poner la siguiente URL: http://localhost:3000/auth/google
+    - Ingresar en una cuenta de google y verificar que la respuesta .JSON sea correcta 
 
 # Documentación de la API
 
