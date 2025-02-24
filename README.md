@@ -487,7 +487,7 @@ Content-Type: application/json
 **Endpoint:**
 
 ```
-POST http://localhost:5000/validate-docx-file
+POST http://localhost:5000/validate-docx-file/capitulo/"numero de capitulo"
 ```
 
 **Headers:**
