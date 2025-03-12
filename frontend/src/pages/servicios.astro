@@ -1,0 +1,50 @@
+---
+import SectionContainer from "../components/SectionContainer.astro";
+import Slider from "../components/Slider.astro";
+import Layout from "../layouts/Layout.astro";
+import CardParaQuien from "../components/CardParaQuien.astro";
+import Testimonios from "../components/Testimonios.astro";
+---
+
+<Layout
+  title="Docucheck"
+  description="Herramienta en línea para la verificación de documentos"
+>
+  <SectionContainer class="w-full lg:w-[1080px] mx-auto pb-32 pt-32">
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      Nuestros <span
+        class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
+        >servicios</span
+      >
+    </h1>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      Soluciones inteligentes para perfeccionar tus textos en cualquier momento.
+    </p>
+    <Slider />
+  </SectionContainer>
+  <SectionContainer class="w-full lg:w-[1080px] mx-auto pb-32 pt-32">
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      ¿Para quién es <span
+        class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
+        >nuestro servicio?</span
+      >
+    </h1>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      Pensado para quienes escriben, diseñado para quienes buscan la perfección.
+    </p>
+    <CardParaQuien />
+  </SectionContainer>
+  <SectionContainer class="w-full lg:w-[1080px] mx-auto pb-32 pt-32">
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      Confianza respaldada por <span
+        class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
+        >nuestros usuarios.</span
+      >
+    </h1>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      Descubre cómo ayudamos a estudiantes, profesionales y empresas a lograr
+      documentos impecables.
+    </p>
+    <Testimonios />
+  </SectionContainer>
+</Layout>

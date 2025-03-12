@@ -1,19 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+import NumberOneIcon from "../components/icons/NumberOneIcon.astro";
+import NumberTwoIcon from "../components/icons/NumberTwoIcon.astro";
+import NumberThreeIcon from "../components/icons/NumberThreeIcon.astro";
 ---
 
 <Layout
   title="Docucheck"
   description="Herramienta en línea para la verificación de documentos"
 >
-  <SectionContainer class="pt-32 pb-32">
-    <div class="flex justify-center pb-6">
+  <SectionContainer class="w-full lg:w-[1080px] mx-auto pb-32 pt-32">
+    <div class="flex justify-center pb-6 w-[740px] mx-auto">
       <a href="">
         <button
           class="text-[#F4F5F7] inline-flex items-center justify-center border align-middle select-none font-sans font-semibold text-center transition-all ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none py-2 px-4 bg-[#3B5444] relative border-stone-500 hover:bg-transparent duration-150 hover:border-stone-200 rounded-full hover:shadow-none shadow-lg shadow-green-500/15"
         >
-          <span class=""
+          <span
             >Lleva tu escritura al siguiente nivel con el poder de la IA. <span
               class="text-green-400 font-bold"
               >Saber más <span class="text-[#8BBE43]">&rarr;</span></span
@@ -22,28 +25,118 @@ import SectionContainer from "../components/SectionContainer.astro";
         </button>
       </a>
     </div>
-    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+    <h1
+      class="text-center text-[55px] font-extrabold text-[#F4F5F7] w-[740px] mx-auto"
+    >
       Correción inteligente, <span
         class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
         >escritura impecable.</span
       >
     </h1>
-    <p class="text-center text-[20px] text-gray-300 mt-4">
+    <p class="text-center text-[20px] text-gray-300 m-4 w-[740px] mx-auto">
       Permite a cualquier usuario subir, analizar y mejorar sus documentos con
       IA, optimizando su escritura de manera rápida y precisa desde cualquier
       lugar.
     </p>
-    <SectionContainer class="pt-32 pb-32">
-      <div class="flex justify-center pb-6">
-        <button
-          class="text-[#F4F5F7] inline-flex items-center justify-center border align-middle select-none font-sans font-semibold text-center transition-all ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none py-2 px-4 bg-[#3B5444] relative border-stone-500 hover:bg-transparent duration-150 hover:border-stone-200 rounded-full hover:shadow-none shadow-lg shadow-green-500/15"
+    <a class="flex items-center justify-center p-4" href="">
+      <button
+        class="inline-flex items-center justify-center border align-middle select-none font-sans font-semibold text-center transition-all ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none py-2 px-4 shadow-sm bg-gradient-to-r from-green-500 to-green-600 relative border-stone-500 hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 duration-150 hover:border-stone-200 rounded-lg hover:shadow-none text-[#F4F5F7]"
+      >
+        Subir documento
+        <span
+          class="ml-2 transition-transform duration-150 transform hover:translate-x-1"
+          >→</span
         >
-          <span>¿Cómo funciona?</span>
-        </button>
-      </div>
-      <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
-        Lorem ipsum dolor sit amet.
-      </h1>
-    </SectionContainer>
+      </button>
+    </a>
+    <div class="flex items-center justify-center space-x-8 py-4">
+      <img
+        src="public/contents/corrector-de-textos-editor-ia.png"
+        alt=""
+        class="rounded-lg w-full h-[589.500px]"
+      />
+    </div>
+  </SectionContainer>
+  <SectionContainer
+    id="como-funciona"
+    class="w-full lg:w-[1080px] mx-auto pt-32 pb-32"
+  >
+    <div class="flex justify-center pb-6">
+      <button
+        class="text-[#F4F5F7] inline-flex items-center justify-center border align-middle select-none font-sans font-semibold text-center transition-all ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none py-2 px-4 bg-[#3B5444] relative border-stone-500 hover:bg-transparent duration-150 hover:border-stone-200 rounded-full hover:shadow-none shadow-lg shadow-green-500/15"
+        onclick="document.getElementById('como-funciona').scrollIntoView({ behavior: 'smooth' });"
+      >
+        <span>¿Cómo funciona?</span>
+      </button>
+    </div>
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      ¡Corrige tu texto en 3 simples pasos!
+    </h1>
+    <div class="flex items-center justify-center space-x-8 m-4">
+      <button
+        class="flex items-center space-x-2 text-[#F4F5F7] hover:bg-[#3B5444] transition duration-200 focus:outline-none rounded-xl p-2 cursor-pointer"
+        onclick="changeImage('image1', 'public/contents/a.jpg')"
+      >
+        <NumberOneIcon class="size-16" />
+        <span class="text-[#F4F5F7]">
+          Sube tu documento
+          <span class="text-gray-500">
+            - Carga tu archivo en formato .docx, .pdf o .txt fácilmente.
+          </span>
+        </span>
+      </button>
+      <button
+        class="flex items-center space-x-2 text-[#F4F5F7] hover:bg-[#3B5444] transition duration-200 focus:outline-none rounded-xl p-2 cursor-pointer"
+        onclick="changeImage('image2', 'public/contents/b.png')"
+      >
+        <NumberTwoIcon class="size-16" />
+        <span class="text-[#F4F5F7]">
+          Deja que la IA lo revise
+          <span class="text-gray-500">
+            - Detectamos errores y te damos sugerencias en segundos.
+          </span>
+        </span>
+      </button>
+      <button
+        class="flex items-center space-x-2 text-[#F4F5F7] hover:bg-[#3B5444] transition duration-200 focus:outline-none rounded-xl p-2 cursor-pointer"
+        onclick="changeImage('image3', 'public/contents/c.png')"
+      >
+        <NumberThreeIcon class="size-16" />
+        <span class="text-[#F4F5F7]">
+          Descarga tu nueva versión
+          <span class="text-gray-500">
+            - Recibe un documento corregido y listo para usar.
+          </span>
+        </span>
+      </button>
+    </div>
+    <div class="flex items-center justify-center space-x-8 py-4">
+      <img
+        id="mainImage"
+        src="public/contents/corrector-de-textos-editor-ia.png"
+        alt=""
+        class="rounded-lg w-full h-[589.500px]"
+      />
+    </div>
   </SectionContainer>
 </Layout>
+
+<script type="module">
+  function changeImage(buttonId, imageSrc) {
+    const mainImage = document.getElementById("mainImage");
+    if (mainImage) {
+      mainImage.src = imageSrc;
+    }
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      if (button.getAttribute("onclick")?.includes(buttonId)) {
+        button.classList.add("bg-[#3B5444]");
+      } else {
+        button.classList.remove("bg-[#3B5444]");
+      }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    window.changeImage = changeImage;
+  });
+</script>

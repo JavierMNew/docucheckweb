@@ -1,0 +1,37 @@
+---
+import SectionContainer from "../components/SectionContainer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Docucheck"
+  description="Herramienta en línea para la verificación de documentos"
+>
+  <SectionContainer class="w-full lg:w-[90%] mx-auto pb-32 pt-32">
+    <h1 class="text-center text-[55px] font-extrabold text-[#F4F5F7]">
+      Quiénes somos y qué es <span
+        class="text-transparent bg-clip-text bg-gradient-to-tr from-[#FF8660] to-[#8000FF]"
+        >Docucheck.</span
+      >
+    </h1>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      <strong>Uso permitido:</strong> Quién puede usar la plataforma y para qué fines
+      (prohibido subir contenido ilegal, etc.).
+    </p>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      <strong>Responsabilidad:</strong> No garantizamos correcciones perfectas, ni
+      nos responsabilizamos de los resultados si el usuario no revisa la sugerencia.
+    </p>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      <strong>Propiedad del contenido:</strong> El contenido subido sigue siendo
+      propiedad del usuario, no lo almacenamos sin permiso.
+    </p>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      <strong>Modificaciones:</strong> Nos reservamos el derecho a cambiar los términos
+      y notificaremos si es relevante.
+    </p>
+    <p class="text-center text-[20px] text-gray-300 m-4">
+      <strong>Contacto:</strong> Cómo comunicarse con nosotros ante dudas legales.
+    </p>
+  </SectionContainer>
+</Layout>

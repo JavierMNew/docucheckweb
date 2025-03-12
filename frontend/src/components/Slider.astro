@@ -1,0 +1,92 @@
+<div
+  class="h-screen w-full overflow-hidden flex flex-nowrap text-center py-4"
+  id="slider"
+>
+  <div
+    class="bg-[#3B5444] text-white space-y-4 flex-none w-full flex flex-col items-center rounded-lg pt-6"
+  >
+    <h2 class="text-4xl max-w-md">📝 Corrección de Estilo</h2>
+    <p class="max-w-md">
+      Refinamos la claridad, coherencia y el tono de tu texto. Aseguramos que el
+      mensaje sea directo, fluido y profesional.
+    </p>
+    <img
+      class="w-[80%]"
+      src="public/contents/corrector-de-textos-editor-ia.png"
+      alt=""
+    />
+  </div>
+  <div
+    class="bg-[#3B5444] text-white space-y-4 flex-none w-full flex flex-col items-center rounded-lg pt-6"
+  >
+    <h2 class="text-4xl max-w-md">🔍 Ortografía y Gramática</h2>
+    <p class="max-w-md">
+      Detectamos y corregimos errores ortográficos, de puntuación y gramática.
+      Nada pasa desapercibido para nuestra IA.
+    </p>
+    <img
+      class="w-[80%]"
+      src="public/contents/corrector-de-textos-editor-ia.png"
+      alt=""
+    />
+  </div>
+  <div
+    class="bg-[#3B5444] text-white space-y-4 flex-none w-full flex flex-col items-center rounded-lg pt-6"
+  >
+    <h2 class="text-4xl max-w-md">📄 Formato Profesional</h2>
+    <p class="max-w-md">
+      Aplicamos normas de estilo para que tu documento cumpla con estándares
+      profesionales y académicos (APA, MLA, etc.).
+    </p>
+    <img
+      class="w-[80%]"
+      src="public/contents/corrector-de-textos-editor-ia.png"
+      alt=""
+    />
+  </div>
+  <div
+    class="bg-[#3B5444] text-white space-y-4 flex-none w-full flex flex-col items-center rounded-lg pt-6"
+  >
+    <h2 class="text-4xl max-w-md">🎓 Revisión Académica</h2>
+    <p class="max-w-md">
+      Para tesis, ensayos y papers. Revisión rigurosa asegurando calidad y citas
+      correctamente aplicadas.
+    </p>
+    <img
+      class="w-[80%]"
+      src="public/contents/corrector-de-textos-editor-ia.png"
+      alt=""
+    />
+  </div>
+  <div
+    class="bg-[#3B5444] text-white space-y-4 flex-none w-full flex flex-col items-center rounded-lg pt-6"
+  >
+    <h2 class="text-4xl max-w-md">📊 Informe de Mejoras</h2>
+    <p class="max-w-md">
+      Te entregamos un informe con los cambios sugeridos y aplicados, para que
+      aprendas y mejores en futuras redacciones.
+    </p>
+    <img
+      class="w-[80%]"
+      src="public/contents/corrector-de-textos-editor-ia.png"
+      alt=""
+    />
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.querySelector("#slider");
+    setTimeout(function moveSlide() {
+      const max = slider.scrollWidth - slider.clientWidth;
+      const left = slider.clientWidth;
+
+      if (max === slider.scrollLeft) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        slider.scrollBy({ left, behavior: "smooth" });
+      }
+
+      setTimeout(moveSlide, 2000);
+    }, 2000);
+  });
+</script>
