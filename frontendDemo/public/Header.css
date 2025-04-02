@@ -1,0 +1,51 @@
+/* Header principal */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Espacio entre los elementos */
+    color: #f4f5f7; /* Texto blanco */
+    padding: 20px 40px; /* Espacio superior e inferior: 20px, izquierda y derecha: 40px */
+    text-align: center;
+    font-size: 25px;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 40px; /* Ajusta el tamaño del logo */
+  margin-right: 10px;
+}
+
+/* Navegación */
+.header-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #f4f5f7;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #77aa7d; /* Verde claro */
+}

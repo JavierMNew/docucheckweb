@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Login.css'; // Importa el archivo CSS
 
 function Login({ onLoginSuccess }) {
   const [credentials, setCredentials] = useState({
@@ -10,7 +11,7 @@ function Login({ onLoginSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    
+
     try {
       const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
@@ -35,24 +36,38 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className="auth-form">
-      <h2>Iniciar Sesión</h2>
-      {error && <div className="error-message">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre de usuario"
-          value={credentials.username}
-          onChange={(e) => setCredentials({...credentials, username: e.target.value})}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={credentials.password}
-          onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-        />
-        <button type="submit">Iniciar Sesión</button>
-      </form>
+    <div className="auth-form-container">
+      <div className="auth-form">
+        <h2 className="auth-title">Iniciar Sesión</h2>
+        {error && <div className="error-message">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="username">Nombre de usuario</label>
+            <input
+              id="username"
+              type="text"
+              className="form-input"
+              placeholder="Nombre de usuario"
+              value={credentials.username}
+              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="password">Contraseña</label>
+            <input
+              id="password"
+              type="password"
+              className="form-input"
+              placeholder="Contraseña"
+              value={credentials.password}
+              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+            />
+          </div>
+          <div className="form-footer">
+            <button type="submit" className="form-button">Iniciar Sesión</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

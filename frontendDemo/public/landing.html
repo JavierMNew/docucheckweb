@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="Landing.css" />
+    <link rel="stylesheet" href="Header.css" />
+    <link rel="stylesheet" href="Footer.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/Landing.html" class="nav-link">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a href="/" class="nav-link">Servicio</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contacto" class="nav-link">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="section-container">
+      <div class="button-container">
+        <a href="/">
+          <button class="cta-button">
+            Lleva tu escritura al siguiente nivel con el poder de la IA.
+            <span class="highlight">Saber más &rarr;</span>
+          </button>
+        </a>
+      </div>
+      <h1 class="main-heading">
+        Correción inteligente,
+        <span class="gradient-text">escritura impecable.</span>
+      </h1>
+      <p class="description">
+        Permite a cualquier usuario subir, analizar y mejorar sus documentos con
+        IA, optimizando su escritura de manera rápida y precisa desde cualquier
+        lugar.
+      </p>
+      <a class="ancora-land" href="/">
+        <div class="button-container">
+          <button
+            class="cta-button"
+            onclick="document.getElementById('como-funciona').scrollIntoView({ behavior: 'smooth' });"
+          >
+            Subir documento
+          </button>
+        </div>
+      </a>
+      <div class="image-container">
+        <img
+          src="contents/corrector-de-textos-editor-ia.png"
+          alt="Corrector de textos"
+          class="main-image"
+        />
+      </div>
+    </div>
+
+    <div id="como-funciona" class="section-container">
+      <div class="button-container">
+        <button
+          class="cta-button"
+          onclick="document.getElementById('como-funciona').scrollIntoView({ behavior: 'smooth' });"
+        >
+          ¿Cómo funciona?
+        </button>
+      </div>
+      <h1 class="main-heading">¡Corrige tu texto en 3 simples pasos!</h1>
+      <div class="steps-container">
+        <button
+          class="step-button"
+          onclick="changeImage('image1', 'contents/a.jpg')"
+        >
+          <span class="step-number">1</span>
+          <span class="step-text">
+            Sube tu documento
+            <span class="step-description"
+              >- Carga tu archivo en formato .docx, .pdf o .txt
+              fácilmente.</span
+            >
+          </span>
+        </button>
+        <button
+          class="step-button"
+          onclick="changeImage('image2', 'contents/b.png')"
+        >
+          <span class="step-number">2</span>
+          <span class="step-text">
+            Deja que la IA lo revise
+            <span class="step-description"
+              >- Detectamos errores y te damos sugerencias en segundos.</span
+            >
+          </span>
+        </button>
+        <button
+          class="step-button"
+          onclick="changeImage('image3', 'contents/c.png')"
+        >
+          <span class="step-number">3</span>
+          <span class="step-text">
+            Descarga tu nueva versión
+            <span class="step-description"
+              >- Recibe un documento corregido y listo para usar.</span
+            >
+          </span>
+        </button>
+      </div>
+      <div class="image-container">
+        <img
+          id="mainImage"
+          src="contents/corrector-de-textos-editor-ia.png"
+          alt="Corrector de textos"
+          class="main-image"
+        />
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="/landing" class="footer-logo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png"
+                class="footer-logo-image"
+                alt="logo"
+              />
+              <span class="footer-logo-text">Docucheck</span>
+            </a>
+            <p class="footer-description">Sube, corrige y brilla con IA.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h2 class="footer-heading">Legal</h2>
+              <ul class="footer-list">
+                <li class="footer-item">
+                  <a href="/terminos-uso" class="footer-link"
+                    >Términos de uso</a
+                  >
+                </li>
+                <li class="footer-item">
+                  <a href="/politica-privacidad" class="footer-link"
+                    >Política de privacidad</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function changeImage(buttonId, imageSrc) {
+        const mainImage = document.getElementById("mainImage");
+        if (mainImage) {
+          mainImage.src = imageSrc;
+        }
+      }
+    </script>
+  </body>
+</html>

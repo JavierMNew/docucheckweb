@@ -1,0 +1,91 @@
+/* Contenedor principal */
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; /* Altura mínima del contenedor */
+  width: 100%;
+}
+
+/* Formulario */
+.auth-form {
+  background-color: #0F2F2A; /* Fondo blanco */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  padding: 20px 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Título */
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f4f5f7; /* Verde oscuro */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Mensaje de error */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Grupo de formulario */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #f4f5f7; /* Verde oscuro */
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  border-color: #f4f5f7; /* Verde oscuro */
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(59, 84, 68, 0.25);
+}
+
+/* Botón */
+.form-button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f4f5f7; /* Verde oscuro */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #2e4237; /* Hover más oscuro */
+}
+
+.form-footer {
+  margin-top: 20px;
+}
