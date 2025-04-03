@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Login from "./components/Login";
+import Register from "./components/Register";
+
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Cambiar a true para omitir autenticación
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [file, setFile] = useState(null);
-  const [sourceId, setSourceId] = useState("fakeSourceId123"); // Valor ficticio
+  const [sourceId, setSourceId] = useState(null);
   const [pdfUrl, setPdfUrl] = useState(null);
   const [response, setResponse] = useState(null);
   const [errors, setErrors] = useState([]);
-  const [prompt, setPrompt] = useState(
-    "Este es un prompt de ejemplo para pruebas."
-  ); // Prompt ficticio
+  const [prompt, setPrompt] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [currentChapter, setCurrentChapter] = useState(1); // Estado para el capítulo actual
   const [isLoading, setIsLoading] = useState(false);
@@ -70,10 +69,34 @@ function App() {
   };
 
   const handleAskQuestion = async () => {
-    console.log("Simulando respuesta del backend...");
-    setResponse("Respuesta simulada del sistema.");
-    setErrors(["Error simulado 1", "Error simulado 2"]);
-    setShowModal(true);
+    if (!prompt) {
+      console.error("Prompt not loaded yet.");
+      return;
+    }
+
+    setIsLoading(true); // Activar loading
+    try {
+      const res = await fetch("http://localhost:3000/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ sourceId: sourceId, question: prompt }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setResponse(data.content);
+        setErrors(extractErrors(data.content));
+        setShowModal(true);
+      } else {
+        console.error("Error asking the question:", data.error);
+      }
+    } catch (error) {
+      console.error("Error asking the question:", error);
+    } finally {
+      setIsLoading(false); // Desactivar loading
+    }
   };
 
   const handleFreeQuestion = async () => {
@@ -186,8 +209,17 @@ function App() {
   };
 
   const handleLogout = async () => {
-    console.log("Logout bypassed for development purposes.");
-    setIsAuthenticated(false); // Opcional: Puedes mantener esto para simular el cierre de sesión
+    try {
+      const response = await fetch("http://localhost:3000/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      if (response.ok) {
+        setIsAuthenticated(false);
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   if (!isAuthenticated) {
