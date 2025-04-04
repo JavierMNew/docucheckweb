@@ -24,10 +24,10 @@ const Footer = () => {
               <h2 className="footer-heading">Legal</h2>
               <ul className="footer-list">
                 <li className="footer-item">
-                  <a href="/terminos-uso" className="footer-link">Términos de uso</a>
+                  <a href="terminos.html" className="footer-link">Términos de uso</a>
                 </li>
                 <li className="footer-item">
-                  <a href="/politica-privacidad" className="footer-link">Política de privacidad</a>
+                  <a href="politica.html" className="footer-link">Política de privacidad</a>
                 </li>
               </ul>
             </div>
