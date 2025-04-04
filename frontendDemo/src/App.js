@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -278,7 +280,6 @@ function App() {
               Subir Documento
             </button>
           </div>
-
           {pdfUrl && (
             <div className="pdf-viewer">
               <h5>Vista previa del documento:</h5>
@@ -290,7 +291,6 @@ function App() {
               />
             </div>
           )}
-
           {sourceId && (
             <>
               <div className="review-section">
@@ -344,24 +344,145 @@ function App() {
               </div>
             </>
           )}
-
+        
+      
           {showModal && (
             <div className="modal">
               <div className="modal-content">
-                <h2>Análisis del Documento</h2>
-                <h3>Respuesta del sistema:</h3>
-                <ul>
-                  {response.split("\n").map((line, index) => (
-                    <li key={index}>{line}</li>
-                  ))}
-                </ul>
-                <h3>Errores encontrados:</h3>
-                <ul>
-                  {errors.map((error, index) => (
-                    <li key={index}>{error}</li>
-                  ))}
-                </ul>
-                <button onClick={closeModal}>Cerrar</button>
+                <div className="modal-header">
+                  <h2>Análisis del Documento</h2>
+                  <p className="modal-subtitle">
+                    Reporte de Validación del CAPÍTULO {currentChapter}
+                  </p>
+                </div>
+
+                <div className="report-section">
+                  <h3 className="section-title">Antecedente Histórico</h3>
+                  <div className="content-item">
+                    <span className="compliance compliance-ok">
+                      Cumplimiento
+                    </span>{" "}
+                    Se incluye una sección que describe la creación y evolución
+                    de la empresa Nilsen.
+                  </div>
+                  <div className="content-item">
+                    <span className="compliance compliance-fail">
+                      No Cumple
+                    </span>{" "}
+                    No se menciona claramente el objetivo de implementar una
+                    aplicación web para registrar calificaciones y datos de los
+                    alumnos. En su lugar, se enfoca en la gestión de facturas.
+                  </div>
+                </div>
+
+                <div className="report-section">
+                  <h3 className="section-title">Contenido del Documento</h3>
+                  <div className="content-item">
+                    <span className="compliance compliance-fail">
+                      No Cumple
+                    </span>{" "}
+                    El documento no menciona que estará dividido en varios
+                    capítulos, incluyendo:
+                  </div>
+                  <ul className="content-list">
+                    <li className="content-item">
+                      Marco metodológico: historia de la institución, objetivos
+                      y metodología.
+                    </li>
+                    <li className="content-item">
+                      Herramientas utilizadas: Visual Studio Code, Bootstrap,
+                      PHP, SQL Server.
+                    </li>
+                    <li className="content-item">
+                      Resultados obtenidos y conclusiones.
+                    </li>
+                    <li className="content-item">
+                      Referencias bibliográficas y anexos.
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="report-section">
+                  <h3 className="section-title">
+                    Recomendaciones para la Redacción
+                  </h3>
+                  <div className="content-item">
+                    <span className="compliance compliance-ok">
+                      Cumplimiento
+                    </span>{" "}
+                    No se observan repeticiones de párrafos en el mismo párrafo.
+                  </div>
+                  <div className="content-item">
+                    <span className="compliance compliance-ok">
+                      Cumplimiento
+                    </span>{" "}
+                    La numeración de los capítulos es uniforme.
+                  </div>
+                </div>
+
+                <div className="report-section">
+                  <h3 className="section-title">Estructura del Documento</h3>
+                  <div className="content-item">
+                    <span className="compliance compliance-fail">
+                      No Cumple
+                    </span>{" "}
+                    La introducción no incluye una breve explicación de la
+                    problemática, antecedentes, evolución y objetivo del trabajo
+                    de manera clara.
+                  </div>
+                  <div className="content-item">
+                    <span className="compliance compliance-fail">
+                      No Cumple
+                    </span>{" "}
+                    El desarrollo no contiene una explicación de los capítulos,
+                    su importancia y contenido.
+                  </div>
+                  <div className="content-item">
+                    <span className="compliance compliance-fail">
+                      No Cumple
+                    </span>{" "}
+                    La conclusión no proporciona un resumen generalizado de lo
+                    abordado en el documento.
+                  </div>
+                </div>
+
+                <div className="summary-section">
+                  <h3 className="summary-title">Resumen</h3>
+                  <p>
+                    El CAPÍTULO 1 presenta deficiencias en la claridad de los
+                    objetivos de la aplicación web, la estructura de capítulos,
+                    y la explicación de la problemática y conclusiones. Se
+                    recomienda revisar y ajustar estos aspectos para cumplir con
+                    los protocolos de la universidad.
+                  </p>
+                </div>
+
+                <div className="errors-section">
+                  <h3 className="errors-title">Errores encontrados</h3>
+                  <div className="error-item">
+                    No se incluye una sección de antecedentes históricos.
+                  </div>
+                  <div className="error-item">
+                    No se menciona claramente el objetivo de implementar la
+                    aplicación web.
+                  </div>
+                  <div className="error-item">
+                    No se menciona el marco metodológico en los capítulos.
+                  </div>
+                  <div className="error-item">
+                    No se describen correctamente las herramientas utilizadas.
+                  </div>
+                  <div className="error-item">
+                    Falta la sección de resultados obtenidos y conclusiones.
+                  </div>
+                  <div className="error-item">
+                    No se incluyen referencias bibliográficas.
+                  </div>
+                </div>
+
+                <button className="close-button" onClick={closeModal}>
+                  Cerrar
+                </button>
               </div>
             </div>
           )}
