@@ -20,6 +20,10 @@ function App() {
   const [freeQuestion, setFreeQuestion] = useState("");
   const [freeQuestionLoading, setFreeQuestionLoading] = useState(false);
 
+  const cleanText = (text) => {
+    return text.replace(/###|"""|\*\*\*/g, "").trim();
+  };
+
   // Cargar el prompt del capítulo actual desde el backend
   useEffect(() => {
     const loadPrompt = async () => {
@@ -88,7 +92,7 @@ function App() {
       });
       const data = await res.json();
       if (res.ok) {
-        setResponse(data.content);
+        setResponse(cleanText(data.content)); // Limpia el texto antes de asignarlo
         setErrors(extractErrors(data.content));
         setShowModal(true);
       } else {
@@ -108,7 +112,6 @@ function App() {
 
     setFreeQuestionLoading(true);
     try {
-      // Primero obtener el contexto del capítulo actual
       const promptRes = await fetch("http://localhost:5000/get-prompt", {
         method: "POST",
         headers: {
@@ -122,10 +125,8 @@ function App() {
         throw new Error("Error getting chapter context");
       }
 
-      // Combinar el contexto del capítulo con la pregunta libre
       const contextualizedQuestion = `${promptData.prompt}\n\nPregunta específica: ${freeQuestion}`;
 
-      // Hacer la pregunta con el contexto
       const res = await fetch("http://localhost:3000/ask", {
         method: "POST",
         headers: {
@@ -140,7 +141,7 @@ function App() {
 
       const data = await res.json();
       if (res.ok) {
-        setResponse(data.content);
+        setResponse(cleanText(data.content)); // Limpia el texto antes de asignarlo
         setShowModal(true);
       } else {
         console.error("Error asking the question:", data.error);
